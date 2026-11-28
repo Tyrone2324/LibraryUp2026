@@ -1069,7 +1069,69 @@
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
     .rv { opacity: 1; transform: none; }
+  } 
+    /* ==================== NEW HOMEPAGE CARD ==================== */
+  .welcome-card {
+    max-width: 960px;
+    width: 100%;
+    padding: clamp(28px, 4vw, 44px) 24px;
+    border-radius: 28px;
+    background: #f5ede2;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 28px 70px rgba(28, 16, 9, 0.28);
+    text-align: center;
   }
+  .wc-eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: #7a4b24;
+  }
+  .wc-title {
+    margin: 14px 0 12px;
+    font: 600 clamp(28px, 4vw, 34px)/1.2 "Segoe UI", system-ui, sans-serif;
+    color: #7a4b24;
+  }
+  .wc-sub {
+    margin: 0 auto 22px;
+    max-width: 640px;
+    font-size: 15.5px;
+    color: #6b5444;
+  }
+  .wc-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .wc-btn {
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s, background .2s;
+  }
+  .wc-btn:hover { transform: translateY(-2px); }
+  .wc-primary { background: #8b5a2b; color: #fff; box-shadow: 0 6px 16px rgba(111, 68, 29, 0.28); }
+  .wc-primary:hover { background: #754a21; }
+  .wc-light { background: #fff; color: #23160e; box-shadow: 0 4px 12px rgba(32, 19, 10, 0.08); }
+  .wc-divider { height: 1px; background: rgba(139, 90, 43, 0.28); margin: 26px clamp(0px, 3vw, 20px); }
+  .wc-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: left;
+    padding: 0 clamp(0px, 3vw, 20px);
+  }
+  .wc-feature svg {
+    width: 26px; height: 26px; margin-bottom: 10px;
+    fill: none; stroke: #8b5a2b; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .wc-feature strong { display: block; font-size: 19px; font-weight: 600; color: #23160e; }
+  .wc-feature span { display: block; font-size: 14.5px; color: #6b5444; margin-top: 2px; }
+  .wc-tagline { font-size: 17px; font-weight: 600; color: #7a4b24; }
+  @media (max-width: 760px) {
+    .wc-features { grid-template-columns: 1fr; gap: 18px; }
+  }
+
 </style>
 </head>
 <body>
@@ -1090,31 +1152,39 @@
       </div>
     </nav>
 
-    <header class="hero">
-      <div class="hero-glass-frame">
-        <div class="hero-eyebrow">Campus Circulation &amp; Catalog Platform</div>
-        <h1>Your campus library, in one place.</h1>
-        <p class="sub">Catalog every book, enroll students effortlessly, lend in two clicks, and see what is overdue before anyone has to ask.</p>
-        <div class="btns">
-          <a href="#showcase" class="btn p" onclick="event.preventDefault(); navigateTo('showcase')">Explore Books &amp; System Info →</a>
-          <button type="button" class="btn s" onclick="navigateTo('dashboard')">Open Dashboard</button>
-          <a href="#login" class="btn s" onclick="event.preventDefault(); navigateTo('login')">Librarian Sign In</a>
+       <header class="hero">
+      <div class="welcome-card">
+        <div class="wc-eyebrow">Welcome to LibraryDesk</div>
+        <h1 class="wc-title">Your Gateway to Knowledge</h1>
+        <p class="wc-sub">Where knowledge grows, learning begins, and every book opens a new opportunity.</p>
+        <div class="wc-btns">
+          <a href="#showcase" class="wc-btn wc-primary" onclick="event.preventDefault(); navigateTo('showcase')">Explore Books</a>
+          <a href="#login" class="wc-btn wc-light" onclick="event.preventDefault(); navigateTo('login')">Sign In</a>
         </div>
 
-        <div class="hero-highlights">
-          <div class="hero-highlight-item">
+        <div class="wc-divider"></div>
+
+        <div class="wc-features">
+          <div class="wc-feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5.5C4.5 4.3 8 4.3 12 6.5c4-2.2 7.5-2.2 10-1v13c-2.5-1.2-6-1.2-10 1-4-2.2-7.5-2.2-10-1z"/><path d="M12 6.5v13"/></svg>
             <strong>Unified Book Catalog</strong>
-            <span>Search every copy by title, author, or ISBN with live shelf availability.</span>
+            <span>Explore and discover books.</span>
           </div>
-          <div class="hero-highlight-item">
-            <strong>Student Roster Control</strong>
-            <span>Enroll new students or remove inactive borrowers in seconds.</span>
+          <div class="wc-feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.8a3.3 3.3 0 0 1 0 6.4"/><path d="M18 14.3c2.2.6 3.5 2.6 3.5 5.7"/></svg>
+            <strong>Student Records</strong>
+            <span>Manage student information.</span>
           </div>
-          <div class="hero-highlight-item">
-            <strong>PHP &amp; MariaDB Ready</strong>
-            <span>Designed to pair seamlessly with your existing campus backend.</span>
+          <div class="wc-feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5z"/><path d="M5 3.5v17"/><path d="m9.5 11.5 2 2 4-4"/></svg>
+            <strong>Book Management</strong>
+            <span>Track borrowed and returned books.</span>
           </div>
         </div>
+
+        <div class="wc-divider"></div>
+
+        <div class="wc-tagline">Explore Knowledge, One Book at a Time.</div>
       </div>
     </header>
 
@@ -1309,9 +1379,9 @@
 
       <div class="side-footer">
         <div class="librarian-info">
-          <div class="avatar">CL</div>
+          <div class="avatar">TJ</div>
           <div style="overflow:hidden">
-            <div style="font-size:14px;font-weight:600;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:var(--ink)">Clara Reyes</div>
+            <div style="font-size:14px;font-weight:600;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:var(--ink)">Tyron James F. Sultan</div>
             <div style="font-size:12px;color:var(--mut)">Head Librarian</div>
           </div>
         </div>
@@ -2031,7 +2101,7 @@ if ($user &amp;&amp; password_verify($data['password'] ?? '', $user['password_ha
     }
 
     navigateTo('dashboard');
-    showToast('Welcome back, Clara Reyes');
+    showToast('Welcome back, Tyron James F. Sultan');
   }
 
   function handleLogout() {
